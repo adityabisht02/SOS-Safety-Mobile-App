@@ -12,6 +12,18 @@
         android:theme="@style/Theme.SOSMobileApp"
         tools:targetApi="31">
         <activity
+            android:name=".SOSConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewContactsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditSOSMessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddContactActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
