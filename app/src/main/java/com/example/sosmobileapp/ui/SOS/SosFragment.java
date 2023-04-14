@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-//import com.example.sosmobileapp.SOSConfirmationActivity;
+
 import com.example.sosmobileapp.R;
+import com.example.sosmobileapp.SOSConfirmationActivity;
 
 
 public class SosFragment extends Fragment {
@@ -38,7 +39,15 @@ public class SosFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+        sosBtn=view.findViewById(R.id.sosBtn);
 
+        sosBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), SOSConfirmationActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
