@@ -2,19 +2,19 @@ package com.example.sosmobileapp;
 
 public class ContactModel {
     private String phone;
-    private int contactimage;
-    ContactModel(String phone,int contactimage){
+    private int deleteimage;
+    ContactModel(String phone,int deleteimage){
         this.phone=phone;
-        this.contactimage=contactimage;
+        this.deleteimage=deleteimage;
     }
     public String getPhone(){
         return phone;
     }
     public int getImage(){
-        return contactimage;
+        return deleteimage;
     }
-    public void setContactimage(int contactimage){
-        this.contactimage=contactimage;
+    public void setContactimage(int deleteimage){
+        this.deleteimage=deleteimage;
     }
     public void setPhone(String phone){
         this.phone=phone;

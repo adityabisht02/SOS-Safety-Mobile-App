@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddContactActivity extends AppCompatActivity {
     EditText editTextName,editTextPhone;
@@ -28,6 +29,7 @@ public class AddContactActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Contact newcontact=new Contact(editTextName.getText().toString(),editTextPhone.getText().toString());
                 dbhelper.contactDao().insert(newcontact);
+                Toast.makeText(AddContactActivity.this, " Contact Added!!", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -86,12 +86,19 @@ public class SOSConfirmationActivity extends AppCompatActivity {
 
     private void sendSMS() {
 
+        DatabaseHelper dbhelper=DatabaseHelper.getDB(this);
+        List<Contact> contacts=dbhelper.contactDao().getAllContacts();
+
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, MY_PERMISSIONS_REQUEST_SEND_SMS);
 
         } else {
             SmsManager smsManager = SmsManager.getDefault();
-            smsManager.sendTextMessage("+15555215556", null, smsMessage, null, null);
+            for(int i=0;i<contacts.size();i++){
+                String phone=contacts.get(i).getPhone();
+                smsManager.sendTextMessage("+15555215556", null, smsMessage, null, null);
+            }
+
         }
 
 
