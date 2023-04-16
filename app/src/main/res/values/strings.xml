@@ -8,7 +8,8 @@
     <string name="instruction1">1. Use this app to send an emergency SOS message with your live location to 5 contacts. </string>
     <string name="instruction2">2. You can add upto 5 contacts in settings, to whom you can send the SOS.</string>
     <string name="instruction3">3. You can edit the emergency message in the settings as well.</string>
-    <string name="instruction4">4. Make sure you keep your device location on in order to send your live location with the message.</string>
+    <string name="instruction4">4. Make sure you give this app the required permissions , ie. location and SMS.</string>
+    <string name="instruction5">5. When entering your phone number make sure u enter the country code as well. Eg.- +918076287546</string>
     <string name="title_activity_add_contact">AddContactActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

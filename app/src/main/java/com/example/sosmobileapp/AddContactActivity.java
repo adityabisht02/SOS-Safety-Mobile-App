@@ -23,7 +23,6 @@ public class AddContactActivity extends AppCompatActivity {
 
         //returns instance of DB
         DatabaseHelper dbhelper=DatabaseHelper.getDB(this);
-
         addContactBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

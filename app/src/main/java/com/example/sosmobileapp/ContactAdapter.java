@@ -28,8 +28,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ViewHold
         private final ImageView deleteImage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.phoneNumber = itemView.findViewById(R.id.deleteImage);
-            this.deleteImage = itemView.findViewById(R.id.contactPhone);
+            this.phoneNumber = itemView.findViewById(R.id.contactPhone);
+            this.deleteImage = itemView.findViewById(R.id.deleteImage);
         }
     }
 

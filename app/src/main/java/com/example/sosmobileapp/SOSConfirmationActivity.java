@@ -33,7 +33,7 @@ public class SOSConfirmationActivity extends AppCompatActivity {
     Button cancelSOSBtn;
     TextView textViewCountDown;
     int MY_PERMISSIONS_REQUEST_SEND_SMS = 1;
-    String smsMessage = "Help me please !! My location - ";
+    String smsMessage = "HELP ME!! I need immediate assistance !! My location - ";
     String addressresult="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class SOSConfirmationActivity extends AppCompatActivity {
             SmsManager smsManager = SmsManager.getDefault();
             for(int i=0;i<contacts.size();i++){
                 String phone=contacts.get(i).getPhone();
-                smsManager.sendTextMessage("+15555215556", null, smsMessage, null, null);
+                smsManager.sendTextMessage(phone, null, smsMessage, null, null);
             }
 
         }
@@ -114,13 +114,7 @@ public class SOSConfirmationActivity extends AppCompatActivity {
 
             // Get the last known location
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                // TODO: Consider calling
-                //    ActivityCompat#requestPermissions
-                // here to request the missing permissions, and then overriding
-                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                //                                          int[] grantResults)
-                // to handle the case where the user grants the permission. See the documentation
-                // for ActivityCompat#requestPermissions for more details.
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
                 return;
             }
             Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -142,16 +136,29 @@ public class SOSConfirmationActivity extends AppCompatActivity {
                          addressresult = address.getAddressLine(0) + ", " + address.getLocality();
                     }
                 } catch (IOException e) {
+                    if (e != null) {
+                        Log.e("getLocation", e.getMessage());
+                        Toast.makeText(this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
 
                 }finally{
 
-                    smsMessage=smsMessage+" location: "+latitude+" ,"+longitude+", "+addressresult;
+                    smsMessage=smsMessage+latitude+" ,"+longitude+", "+ addressresult;
                 }
+
             }
         } else {
             // Location services are not enabled, prompt the user to enable them
             Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-            startActivity(intent);
+            if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                // GPS is turned on, prompt the user to enable location services
+                startActivity(intent);
+            } else {
+                // GPS is not turned on, show an error message or prompt the user to turn it on
+                Toast.makeText(this, "GPS not ON!!", Toast.LENGTH_SHORT).show();
+            }
+
+
         }
         }
 

@@ -18,4 +18,5 @@ public interface ContactDao {
 
     @Query("SELECT * FROM contacts")
     List<Contact> getAllContacts();
+
 }
